@@ -1,0 +1,15 @@
+{
+    "token": "",
+    "server_openids": [
+        "openid1"
+    ],
+    "openid1": {
+        "token": "",
+        "encoding_aes_key": "",
+        "appid": "",
+        "secret": "",
+        "access_token": "",
+        "expires_in": 0,
+        "update_time": 0.0
+    }
+}
