@@ -25,5 +25,6 @@ def chat(content: str, openid: str):
         except Exception as e:
             logging.error(f"openai_error: {e}")
     else:
+        logging.error(f"openai_error: final error!")
         answer = "出了点小故障，请重新提问"
     return answer
