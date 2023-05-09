@@ -38,9 +38,16 @@ async def root(signature: str, timestamp: str, nonce: str, echostr: str):
 
 
 @app.post("/")
-async def post(request: Request, signature: str, timestamp: str, nonce: str, openid: str, backgroundTasks: BackgroundTasks):
+async def post(*,
+               signature: str,
+               timestamp: str,
+               nonce: str,
+               openid: str,
+               encrypt_type: str = None,
+               msg_signature: str = None,
+               request: Request,
+               backgroundTasks: BackgroundTasks):
     try:
-        logging.info(f"url: {openid} {request.url}")
         token = jsonutil.get_json_field("server_config.json", "$.token")
         list = [token, timestamp, nonce]
         list.sort()
