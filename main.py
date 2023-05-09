@@ -7,9 +7,7 @@ import jsonutil
 import reply
 import receive
 import handle
-from fastapi import FastAPI
-from fastapi import BackgroundTasks
-from starlette.requests import Request
+from fastapi import FastAPI, Request, BackgroundTasks
 
 
 logging.basicConfig(format='%(asctime)s %(levelname)s %(message)s', level=logging.INFO)
@@ -42,6 +40,7 @@ async def root(signature: str, timestamp: str, nonce: str, echostr: str):
 @app.post("/")
 async def post(request: Request, signature: str, timestamp: str, nonce: str, openid: str, backgroundTasks: BackgroundTasks):
     try:
+        logging.info(f"url: {openid} {request.url}")
         token = jsonutil.get_json_field("server_config.json", "$.token")
         list = [token, timestamp, nonce]
         list.sort()
